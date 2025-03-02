@@ -9,6 +9,7 @@ echo"<h1 style='text-decoration:underline;'>User Data</h1></br></br></br>";
 
 echo " <table> 
 	<tr>
+		<th>ID</th>
 		<th>Name</th>
 		<th>Email</th>
 		<th>Ext.</th>
@@ -18,20 +19,30 @@ echo " <table>
 		<th>Action</th>
 	</tr>";
 $users= getAllCustomer();
+$rooms=getAllRooms();
 foreach($users as $user)
 {
 	echo "<tr>";
 	foreach($user as $col => $data)
-	{
+	{		
 		if($col=="image_path")
 		{
 			echo "<td><img src='$data' ></td>";		
+		}else if ($col=="room_id"){
+			foreach ($rooms as $room)
+			{
+				if($room['id']==$data)
+				{
+					echo "<td>{$room['number']}</td>";
+					break;
+				}
+			}		
 		}else
 		echo"<td>$data</td>";		
 	}
-	$email = $user['email'];
-	echo"<td><a href='update.php?email=$email'>Update</a></br>
-		<a href='delete.php?email=$email'>Delete</a></td>
+	$id = $user['id'];
+	echo"<td><a href='update.php?id=$id'>Update</a></br>
+		<a href='delete.php?id=$id'>Delete</a></td>
 		</tr>"	;
 }
 echo " </table>";

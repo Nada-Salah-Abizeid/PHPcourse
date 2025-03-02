@@ -11,16 +11,16 @@ function insertCustomer($name, $email, $password, $ext, $role, $room_id, $pic_pa
 }
 
 function getAllCustomer()
-{
-	$columns=array("name", "email", "ext", "role", "room_id", "image_path"); 
+{  
+	$columns=array("id","name", "email", "ext", "role", "room_id", "image_path"); 
 	$condition='';
 	return select("user", $columns, $condition);
 }
 
-function getCustomer($email)
+function getCustomer($id)
 {
-	$columns=array("name", "ext", "room_id", "image_path"); 
-	$condition="where email= $email";
+	$columns=array("name","email" ,"ext", "room_id", "image_path"); 
+	$condition="id= $id";
 	return select("user", $columns, $condition);
 }
 
@@ -29,15 +29,17 @@ function getAllRooms()
 	return selectAll("room");
 }
 
-function updateCustomer($name, $email, $ext, $role, $room_id, $pic_path, $condition)
+function updateCustomer($id,$name, $email, $ext, $room_id, $pic_path)
 {
-	$values=array($name, $email, $ext, $role, $room_id, $pic_path);
-	$columns=array("name", "email", "ext", "role", "room_id", "image_path"); 
+	$values=array($name, $email, $ext, $room_id, $pic_path, $id);
+	$columns=array("name", "email", "ext", "room_id", "image_path"); 
+	$condition="id= ?";
 	update("user", $columns, $values, $condition);
 }
 
-function deleteCustomer($condition)
+function deleteCustomer($id)
 {
+	$condition="id= $id";
 	delete("user", $condition);
 }
 ?>

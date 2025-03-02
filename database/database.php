@@ -50,31 +50,21 @@ try {
         $sql = "DELETE FROM $table WHERE $condition";
         $conn->exec($sql);
         
-        echo "Record deleted successfully<br>";
     }
 
 
     //update
     function update($table, $columns, $values, $condition)
     {
-	if(count($values)==count($columns))
+	if(count($values)==count($columns)+1)
 	{
 	        global $conn;
 	
-        	$setClause = "";
-	        foreach ($columns as $index => $column) {
-        	    $setClause .= "$column = :$column";
-        	    if ($index < count($columns) - 1) {
-        	        $setClause .= ", ";
-        	    }
-        	}
+        	$setClause = implode(" = ?, ", $columns) . " = ?";
+        
         	$sql = "UPDATE $table SET $setClause WHERE $condition";
-        	$stmt = $conn->prepare($sql);
-        	foreach ($values as $key => $value) {
-        	    $stmt->bindValue(":$key", $value);
-        	}
-        	$stmt->execute();
-        	echo $stmt->rowCount()."Records UPDATED successfully<br>";
+        	$stmt = $conn->prepare($sql);        	       
+		$stmt->execute($values)  ;   		
 	}else{
 		echo "Number of columns and values are not identical.<br>";
 	}

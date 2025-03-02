@@ -61,31 +61,6 @@ if(empty($_POST['email']))
 	}
 }
 
-if(empty($_POST['password']))
-{
-	$errors[]="Please enter your passward.";
-}else{
-	$password= trim($_POST['password']);
-	if(strlen($password)<6)
-	{
-		 echo "Password must be at least 6 characters long.";
-	}elseif(!preg_match("/[a-z]/",$password) || !preg_match("/[A-Z]/",$password) || !preg_match("/[0-9]/",$password))
-	{
-		$errors[] = "Password must contain uppercase letters,lowercase letters, and numbers.";
-	}
-}
-
-if(empty($_POST['cPassword']))
-{
-	$errors[]="Please enter your passward and the confirmation.";
-}else{
-	$cPassword= trim($_POST['cPassword']);
-	if($_POST['cPassword'] != $password)
-	{
-		 echo "Password and confirmation does not match.";
-	}
-}
-
 
 if(empty($_POST['room']))
 {
@@ -106,13 +81,13 @@ if(empty($_POST['ext']))
 if(empty($errors))
 {		
 	$pic_path = "uploads/".basename($_FILES['pic']['name']);
-	insertCustomer($_POST['name'], $_POST['email'], $password_hash, $_POST['ext'], "user", $_POST['room'], $pic_path);
-	header('Location: addUser.php');
+	updateCustomer($_GET['id'],$_POST['name'], $_POST['email'], $_POST['ext'], $_POST['room'], $pic_path);
+	header('Location: displayUsers.php');
 }else{
 	foreach ($errors as $error)
 	{
 		$_SESSION['errors'] = $errors;
-		header('Location: addUser.php');
+			 
 	}
 }
 
