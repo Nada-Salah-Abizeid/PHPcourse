@@ -1,0 +1,121 @@
+/* General Page Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+#header {
+    background-color: #2e3b47; /* Dark header background */
+    color: #fff;
+    padding: 20px 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Styling */
+.logo img {
+    height: 50px;
+}
+
+/* Navigation Menu */
+#navigation {
+    display: flex;
+    gap: 15px;
+}
+
+#navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+#navigation li {
+    margin: 0 10px;
+}
+
+#navigation a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+#navigation a:hover {
+    background-color: #ffd700; /* Golden color on hover */
+}
+
+/* User Info Section */
+.user-info {
+    text-align: center;
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+/* Footer Styles */
+#footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-nav a:hover {
+    color: #ffd700;
+}
+
+/* Social Media Links */
+.social-media {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.social-media a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.social-media a:hover {
+    color: #ffd700;
+}
+
+/* Footer Text */
+.footer-text {
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+}
+
